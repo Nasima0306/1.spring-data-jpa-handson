@@ -28,8 +28,8 @@ public class Application {
 
         LOGGER.info("Start");
 
-        List<Country> countries =
-                countryService.getAllCountries();
+        Country countries =
+                countryService.getCountry("AF");
 
         LOGGER.info("countries={}", countries);
 

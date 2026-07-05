@@ -27,19 +27,26 @@ public class Application {
 	}
     private static void testGetAllCountries() {
 
+
         LOGGER.info("Start");
 
-        try {
-            Country country =
-                    countryService.findCountryByCode("IN");
+        Country country = new Country();
 
-            LOGGER.info("Country: {}", country);
+        country.setCode("ZZ");
+        country.setName("Test Country");
+
+        countryService.addCountry(country);
+
+        try {
+            Country addedCountry =
+                    countryService.findCountryByCode("ZZ");
+
+            LOGGER.info("Country Added: {}", addedCountry);
 
         } catch (CountryNotFoundException e) {
-            LOGGER.error("Error: {}", e.getMessage());
+            LOGGER.error(e.getMessage());
         }
 
         LOGGER.info("End");
     }
-
 }

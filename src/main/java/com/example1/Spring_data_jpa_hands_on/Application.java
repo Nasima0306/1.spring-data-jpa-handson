@@ -1,6 +1,7 @@
 package com.example1.Spring_data_jpa_hands_on;
 
 import com.example1.Spring_data_jpa_hands_on.Service.CountryService;
+import com.example1.Spring_data_jpa_hands_on.exception.CountryNotFoundException;
 import com.example1.Spring_data_jpa_hands_on.model.Country;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,13 +29,17 @@ public class Application {
 
         LOGGER.info("Start");
 
-        Country countries =
-                countryService.getCountry("AF");
+        try {
+            Country country =
+                    countryService.findCountryByCode("IN");
 
-        LOGGER.info("countries={}", countries);
+            LOGGER.info("Country: {}", country);
+
+        } catch (CountryNotFoundException e) {
+            LOGGER.error("Error: {}", e.getMessage());
+        }
 
         LOGGER.info("End");
     }
-
 
 }

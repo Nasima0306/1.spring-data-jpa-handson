@@ -54,4 +54,10 @@ public class CountryService {
 
         countryRepository.save(country);
     }
+    @Transactional
+    public void deleteCountry(String code) {
+        countryRepository.deleteById(code);
+    }
+
+
 }

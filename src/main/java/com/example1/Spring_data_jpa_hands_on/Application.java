@@ -30,24 +30,10 @@ public class Application {
 
         LOGGER.info("Start");
 
-        try {
+        countryService.deleteCountry("ZZ");
 
-            countryService.updateCountry(
-                    "ZZ",
-                    "Updated Test Country");
-
-            Country country =
-                    countryService.findCountryByCode("ZZ");
-
-            LOGGER.info("Updated Country: {}", country);
-
-        } catch (CountryNotFoundException e) {
-
-            LOGGER.error(e.getMessage());
-
-        }
+        LOGGER.info("Country deleted");
 
         LOGGER.info("End");
     }
-
 }

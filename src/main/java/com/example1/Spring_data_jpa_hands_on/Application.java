@@ -30,23 +30,24 @@ public class Application {
 
         LOGGER.info("Start");
 
-        Country country = new Country();
-
-        country.setCode("ZZ");
-        country.setName("Test Country");
-
-        countryService.addCountry(country);
-
         try {
-            Country addedCountry =
+
+            countryService.updateCountry(
+                    "ZZ",
+                    "Updated Test Country");
+
+            Country country =
                     countryService.findCountryByCode("ZZ");
 
-            LOGGER.info("Country Added: {}", addedCountry);
+            LOGGER.info("Updated Country: {}", country);
 
         } catch (CountryNotFoundException e) {
+
             LOGGER.error(e.getMessage());
+
         }
 
         LOGGER.info("End");
     }
+
 }
